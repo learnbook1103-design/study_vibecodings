@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Prep Hub</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .flex-grow-1 {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Food Prep Hub</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="categories.html">Categories</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search Ingredients" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-4">
+        <!-- Hero Section -->
+        <section class="jumbotron text-center bg-light p-5 rounded mb-5">
+            <h1 class="display-4">Master Your Ingredients</h1>
+            <p class="lead">Discover the best ways to clean, cut, and store your vegetables, fruits, and meats for optimal freshness and flavor.</p>
+            <a href="categories.html" class="btn btn-primary btn-lg mt-3">Explore Categories</a>
+        </section>
+
+        <!-- Featured Preparation Guides -->
+        <section class="mb-5">
+            <h2 class="text-center mb-4">Featured Preparation Guides</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x200/28a745/ffffff?text=Cleaning+Leafy+Greens" class="card-img-top" alt="Cleaning Leafy Greens">
+                        <div class="card-body">
+                            <h5 class="card-title">Cleaning Leafy Greens</h5>
+                            <p class="card-text">Tips for thoroughly washing spinach, lettuce, and other leafy vegetables.</p>
+                            <a href="ingredient_detail.html" class="btn btn-primary">Read Guide</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x200/17a2b8/ffffff?text=Cutting+Onions+Like+a+Pro" class="card-img-top" alt="Cutting Onions">
+                        <div class="card-body">
+                            <h5 class="card-title">Cutting Onions Like a Pro</h5>
+                            <p class="card-text">Learn various techniques for dicing, slicing, and mincing onions without tears.</p>
+                            <a href="ingredient_detail.html" class="btn btn-primary">Read Guide</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x200/ffc107/000000?text=Storing+Fresh+Berries" class="card-img-top" alt="Storing Berries">
+                        <div class="card-body">
+                            <h5 class="card-title">Storing Fresh Berries</h5>
+                            <p class="card-text">Extend the shelf life of your strawberries, blueberries, and raspberries.</p>
+                            <a href="ingredient_detail.html" class="btn btn-primary">Read Guide</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Categories -->
+        <section class="mb-5">
+            <h2 class="text-center mb-4">Browse by Category</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-4 mb-3">
+                    <div class="card text-center">
+                        <img src="https://via.placeholder.com/400x200/6f42c1/ffffff?text=Vegetables" class="card-img-top" alt="Vegetables">
+                        <div class="card-body">
+                            <h5 class="card-title">Vegetables</h5>
+                            <a href="vegetables.html" class="btn btn-outline-primary">View Guides</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card text-center">
+                        <img src="https://via.placeholder.com/400x200/dc3545/ffffff?text=Fruits" class="card-img-top" alt="Fruits">
+                        <div class="card-body">
+                            <h5 class="card-title">Fruits</h5>
+                            <a href="fruits.html" class="btn btn-outline-primary">View Guides</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card text-center">
+                        <img src="https://via.placeholder.com/400x200/20c997/ffffff?text=Meats" class="card-img-top" alt="Meats">
+                        <div class="card-body">
+                            <h5 class="card-title">Meats</h5>
+                            <a href="meats.html" class="btn btn-outline-primary">View Guides</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="flex-grow-1"></div> <!-- This div ensures the footer stays at the bottom -->
+
+    <footer class="bg-light text-center text-lg-start mt-auto">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Food Prep Hub</h5>
+                    <p>
+                        Your guide to preparing and managing food ingredients. Learn how to clean, cut, and store your produce and meats.
+                    </p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Links</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#" class="text-dark">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-dark">Contact</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-dark">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-dark">Terms of Service</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Statistics</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#" class="text-dark">Ingredients: 200+</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-dark">Guides: 500+</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-dark">Monthly Visitors: 50K+</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2023 Food Prep Hub. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
