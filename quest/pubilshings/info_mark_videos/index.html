@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Mark Videos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Info Mark Videos</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-4">
+        <h1 class="text-center mb-4">Channel Videos</h1>
+
+        <div class="text-center mb-4">
+            <button type="button" class="btn btn-outline-light filter-btn" data-category="all">All</button>
+            <button type="button" class="btn btn-outline-light filter-btn" data-category="요리 꿀팁">요리 꿀팁</button>
+            <button type="button" class="btn btn-outline-light filter-btn" data-category="레시피">레시피</button>
+            <button type="button" class="btn btn-outline-light filter-btn" data-category="역사/문화">역사/문화</button>
+            <button type="button" class="btn btn-outline-light filter-btn" data-category="기술/기타">기술/기타</button>
+        </div>
+
+        <div class="row" id="video-grid">
+            <!-- Videos will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <footer class="text-center text-lg-start mt-auto">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Info Mark Videos</h5>
+                    <p>
+                        A collection of videos from the Info Mark YouTube channel.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3">
+            © 2025 Info Mark Videos. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const videos = [
+            {
+                "title": "간편하게 했는데… 건강을 해치는 조리 습관 7가지",
+                "url": "https://www.youtube.com/watch?v=e_KF-4_2N-U",
+                "category": "요리 꿀팁"
+            },
+            {
+                "title": "에어프라이어에 호일? 전자레인지 랩? 당신이 몰랐던 간편조리의 진실 TOP7",
+                "url": "https://www.youtube.com/watch?v=0_p4c5_v4pQ",
+                "category": "요리 꿀팁"
+            },
+            {
+                "title": "계란의 무한 변신! 🤯 빵집보다 맛있는 초간단 달걀 디저트 BEST 5",
+                "url": "https://www.youtube.com/watch?v=r_nPUDR_T-w",
+                "category": "레시피"
+            },
+            {
+                "title": "파스타 맛이 매번 다른 진짜 이유, 재료가 아니었습니다",
+                "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                "category": "요리 꿀팁"
+            },
+            {
+                "title": "최종본 에펙공모전 1",
+                "url": "https://www.youtube.com/watch?v=2_30",
+                "category": "기술/기타"
+            },
+            {
+                "title": "[충격반전] 우리가 잘못 알았던 '기사의 갑옷'의 진실! (feat. 둔하고 무겁다는 건 다 거짓말!)",
+                "url": "https://www.youtube.com/watch?v=b-H4b1v2tS8",
+                "category": "역사/문화"
+            },
+            {
+                "title": "최초의 인류부터 메타버스 아바타까지, 세상을 바꾼 '변신'의 기술",
+                "url": "https://www.youtube.com/watch?v=9y73-zC8gGg",
+                "category": "기술/기타"
+            },
+            {
+                "title": "370년된 제주 감귤나무가 증명하는 놀라운 역사 이야기 🌳",
+                "url": "https://www.youtube.com/watch?v=x7b-d__-a-c",
+                "category": "역사/문화"
+            },
+            {
+                "title": "미슐랭 셰프가 절대 말하지 않는 파스타 면 선택의 비밀",
+                "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                "category": "요리 꿀팁"
+            },
+            {
+                "title": "와인의 진짜 고향은 어디? 유럽 아닌 이곳에서 8천년 전 시작됐다",
+                "url": "https://www.youtube.com/watch?v=G-g-g-g-g-g",
+                "category": "역사/문화"
+            }
+        ];
+
+        const videoGrid = document.getElementById('video-grid');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        function displayVideos(filter) {
+            videoGrid.innerHTML = '';
+            const filteredVideos = filter === 'all' ? videos : videos.filter(video => video.category === filter);
+
+            filteredVideos.forEach(video => {
+                const videoId = video.url.split('v=')[1];
+                const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+                const col = document.createElement('div');
+                col.className = 'col-md-4 mb-4';
+                col.innerHTML = `
+                    <div class="card h-100">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="${embedUrl}" title="${video.title}" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">${video.title}</h5>
+                        </div>
+                    </div>
+                `;
+                videoGrid.appendChild(col);
+            });
+        }
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.dataset.category;
+                displayVideos(category);
+            });
+        });
+
+        // Initial display of all videos
+        displayVideos('all');
+    </script>
+</body>
+</html>
