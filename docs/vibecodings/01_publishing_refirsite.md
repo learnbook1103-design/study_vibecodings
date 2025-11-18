@@ -1,100 +1,26 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beauty Mark - 20대 여성 필수 뷰티템</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Beauty Mark</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">홈</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="products.html">제품</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="reviews.html">리뷰</a>
-                    </li>
-                </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="화장품 검색" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">검색</button>
-                </form>
-            </div>
-        </div>
-    </nav>
-
-    <main class="container my-4">
-        <section class="jumbotron text-center p-5 rounded mb-5" style="background-image: url('https://via.placeholder.com/1200x400/FFC0CB/FFFFFF?text=Beauty+Products'); background-size: cover;">
-            <h1 class="display-4 text-white">20대 여성을 위한 필수 뷰티템</h1>
-            <p class="lead text-white">매일매일 더 예뻐지는 비밀, Beauty Mark에서 당신만의 인생템을 찾아보세요.</p>
-            <a href="products.html" class="btn btn-primary btn-lg mt-3">인기 화장품 보러가기</a>
-        </section>
-
-        <section class="mb-5">
-            <h2 class="text-center mb-4">인기 화장품</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <img src="https://via.placeholder.com/400x200/F5DEB3/FFFFFF?text=Foundation" class="card-img-top" alt="파운데이션">
-                        <div class="card-body">
-                            <h5 class="card-title">세미매트 파운데이션</h5>
-                            <p class="card-text">피부 속은 촉촉, 겉은 보송하게! 완벽한 피부 표현을 위한 필수템.</p>
-                            <a href="product-detail.html" class="btn btn-primary">제품 보기</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <img src="https://via.placeholder.com/400x200/FF69B4/FFFFFF?text=Lip+Tint" class="card-img-top" alt="립틴트">
-                        <div class="card-body">
-                            <h5 class="card-title">촉촉 물광 틴트</h5>
-                            <p class="card-text">유리알처럼 빛나는 입술, 하루 종일 생기 있는 컬러를 유지하세요.</p>
-                            <a href="product-detail.html" class="btn btn-primary">제품 보기</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <img src="https://via.placeholder.com/400x200/D2B48C/FFFFFF?text=Eyeshadow" class="card-img-top" alt="아이섀도우">
-                        <div class="card-body">
-                            <h5 class="card-title">데일리 아이섀도우 팔레트</h5>
-                            <p class="card-text">하나의 팔레트로 끝내는 데일리 메이크업, 활용도 높은 컬러 구성.</p>
-                            <a href="product-detail.html" class="btn btn-primary">제품 보기</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="text-center text-lg-start mt-auto">
-        <div class="container p-4">
-            <div class="row">
-                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Beauty Mark</h5>
-                    <p>
-                        Beauty Mark는 20대 여성을 위한 최신 뷰티 정보와 인생템을 추천합니다.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="text-center p-3">
-            © 2025 Beauty Mark. All rights reserved.
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
-</body>
-</html>
+```
+당신은 웹사이트 개발 계획을 수립하는 AI 어시스턴트입니다. 주어진 요구사항에 따라, 기존 HTML 파일의 디자인을 새로운 테마로 변경하기 위한 구체적인 실행 계획을 JSON 형식으로 출력해야 합니다.
+기존파일정보:                                                                                                                                                                                             
+   - 파일 경로: quest/pubilshins/20_vibecordings_conceps/index.html 
+   - 내용: 'Food Mark'라는 이름의 음식 레시피 소개 웹사이트. Bootstrap 기반의 카드 레이아웃을 사용함.
+요구사항:                                                                                                                                                                                                   - 메뉴와 레시피 내용 등 기존 정보는 모두 유지합니다.
+   - 디자인 컨셉을 '청첩장' 느낌으로 완전히 변경합니다. 
+   - 변경 사항은 원본 파일을 덮어쓰지 않고, 새로운 HTML 파일과 CSS 파일을 생성하여 만듭니다.         
+                                                                                                                                                                                                    
+당신이 생성해야 할 JSON 객체는 다음 키(key)를 필수로 포함해야 합니다. 
+1. task_name: (String) "웹사이트 청첩장 테마 적용"
+2. source_file: (String) 변경의 기반이 되는 원본 파일 경로.
+3. output_files: (Array) 생성될 파일들의 정보를 담은 객체의 배열.
+    - 각 파일 객체는 다음을 포함해야 합니다.
+    - file_path: (String) 생성될 파일의 전체 경로.
+    - file_type: (String) "CSS" 또는 "HTML".
+    - description: (String) 파일의 역할에 대한 설명.
+    - changes 또는 styles:
+    - CSS 파일의 경우 `styles` (Object):                                                                                                                                                                
+    - import_fonts: (Array) @import할 Google Fonts 목록.                                                                                                                                            
+    - color_palette: (Object) 테마에 사용할 주요 색상 (예: background, text, accent).                                                                                                               
+    - selectors: (Array) 주요 CSS 선택자와 그 역할에 대한 설명을 담은 객체 배열.                                                                                                                    
+    - HTML 파일의 경우 `changes` (Array):                                                                                                                                                               
+    - 원본 HTML에서 변경되는 부분과 그 내용에 대한 설명을 담은 객체 배열 (예: { "element": "<head>", "modification": "신규 CSS 파일 링크 및 title 변경" }).                                         
+지시:                                                                                                                                                                                                    위 요구사항과 출력 구조에 따라, 'Food Mark' 웹사이트를 '청첩장' 테마로 변경하기 위한 전체 계획을 단일 JSON 객체로 생성하세요.  
+```
