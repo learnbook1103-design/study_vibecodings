@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Merriweather:wght@400;700&display=swap');
+
+body.invitation-theme {
+    font-family: 'Merriweather', serif;
+    background-color: #FDFBF7; /* 아이보리 배경 */
+    color: #5C544A; /* 부드러운 갈색 텍스트 */
+}
+
+.invitation-theme .navbar {
+    background-color: #FFFFFF !important;
+    border-bottom: 1px solid #EAE0D5;
+}
+
+.invitation-theme .navbar-brand,
+.invitation-theme .nav-link {
+    color: #5C544A !important;
+    font-weight: 700;
+}
+
+.invitation-theme .navbar-brand {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+}
+
+.invitation-theme .jumbotron-invitation {
+    background-color: transparent;
+    padding: 4rem 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.invitation-theme .jumbotron-invitation h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4.5rem;
+    color: #B8977E; /* 골드 톤 */
+    margin-bottom: 1rem;
+}
+
+.invitation-theme .jumbotron-invitation p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+}
+
+.invitation-theme .btn-primary {
+    background-color: #B8977E;
+    border-color: #B8977E;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.invitation-theme .btn-primary:hover {
+    background-color: #A2846D;
+    border-color: #A2846D;
+    transform: translateY(-2px);
+}
+
+.invitation-theme .section-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: #B8977E;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.invitation-theme .recipe-card {
+    background-color: #FFFFFF;
+    border: 1px solid #EAE0D5;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.invitation-theme .recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.invitation-theme .recipe-card img {
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+}
+
+.invitation-theme .recipe-card h5 {
+    font-weight: 700;
+    color: #5C544A;
+}
+
+.invitation-theme .recipe-card p {
+    color: #7a7368;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.invitation-theme footer {
+    background-color: #FFFFFF;
+    border-top: 1px solid #EAE0D5;
+    padding: 2rem 0;
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.invitation-theme footer .text-uppercase {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    color: #B8977E;
+}
