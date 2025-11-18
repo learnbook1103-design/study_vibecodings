@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty Mark - 20대 여성 필수 뷰티템</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Beauty Mark</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">제품</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reviews.html">리뷰</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="화장품 검색" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">검색</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-4">
+        <section class="jumbotron text-center p-5 rounded mb-5" style="background-image: url('https://via.placeholder.com/1200x400/FFC0CB/FFFFFF?text=Beauty+Products'); background-size: cover;">
+            <h1 class="display-4 text-white">20대 여성을 위한 필수 뷰티템</h1>
+            <p class="lead text-white">매일매일 더 예뻐지는 비밀, Beauty Mark에서 당신만의 인생템을 찾아보세요.</p>
+            <a href="products.html" class="btn btn-primary btn-lg mt-3">인기 화장품 보러가기</a>
+        </section>
+
+        <section class="mb-5">
+            <h2 class="text-center mb-4">인기 화장품</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x200/F5DEB3/FFFFFF?text=Foundation" class="card-img-top" alt="파운데이션">
+                        <div class="card-body">
+                            <h5 class="card-title">세미매트 파운데이션</h5>
+                            <p class="card-text">피부 속은 촉촉, 겉은 보송하게! 완벽한 피부 표현을 위한 필수템.</p>
+                            <a href="product-detail.html" class="btn btn-primary">제품 보기</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x200/FF69B4/FFFFFF?text=Lip+Tint" class="card-img-top" alt="립틴트">
+                        <div class="card-body">
+                            <h5 class="card-title">촉촉 물광 틴트</h5>
+                            <p class="card-text">유리알처럼 빛나는 입술, 하루 종일 생기 있는 컬러를 유지하세요.</p>
+                            <a href="product-detail.html" class="btn btn-primary">제품 보기</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x200/D2B48C/FFFFFF?text=Eyeshadow" class="card-img-top" alt="아이섀도우">
+                        <div class="card-body">
+                            <h5 class="card-title">데일리 아이섀도우 팔레트</h5>
+                            <p class="card-text">하나의 팔레트로 끝내는 데일리 메이크업, 활용도 높은 컬러 구성.</p>
+                            <a href="product-detail.html" class="btn btn-primary">제품 보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center text-lg-start mt-auto">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Beauty Mark</h5>
+                    <p>
+                        Beauty Mark는 20대 여성을 위한 최신 뷰티 정보와 인생템을 추천합니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3">
+            © 2025 Beauty Mark. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
