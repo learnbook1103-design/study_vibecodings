@@ -65,37 +65,7 @@ body.invitation-theme {
     margin-bottom: 3rem;
 }
 
-.invitation-theme .recipe-card {
-    background-color: #FFFFFF;
-    border: 1px solid #EAE0D5;
-    border-radius: 10px;
-    padding: 1.5rem;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
-    height: 100%;
-}
 
-.invitation-theme .recipe-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.invitation-theme .recipe-card img {
-    border-radius: 5px;
-    margin-bottom: 1.5rem;
-}
-
-.invitation-theme .recipe-card h5 {
-    font-weight: 700;
-    color: #5C544A;
-}
-
-.invitation-theme .recipe-card p {
-    color: #7a7368;
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
-}
 
 .invitation-theme footer {
     background-color: #FFFFFF;
@@ -110,3 +80,103 @@ body.invitation-theme {
     font-size: 2rem;
     color: #B8977E;
 }
+
+#recipeCarousel .carousel-inner {
+    background-color: #FFFFFF;
+    border: 1px solid #EAE0D5;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1) grayscale(100) sepia(1) hue-rotate(30deg) saturate(5); /* Change icon color to match theme */
+}
+
+/* Quick Recommend Bar (Icon Left, Content Right) Styles */
+.recommend-bar-container {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 1030;
+    display: flex;
+    align-items: center;
+}
+
+.recommend-bar-toggle {
+    background-color: #FFFFFF;
+    border: 1px solid #EAE0D5;
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+    padding: 1rem 0.5rem;
+    box-shadow: -4px 4px 15px rgba(0,0,0,0.08);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2; /* Ensure toggle is above the bar */
+}
+
+.recommend-bar-toggle svg {
+    fill: #B8977E;
+}
+
+.quick-recommend-bar {
+    background-color: #FFFFFF;
+    border: 1px solid #EAE0D5;
+    border-left: none;
+    border-radius: 0 10px 10px 0;
+    box-shadow: -4px 4px 15px rgba(0,0,0,0.08);
+    
+    /* Hide by default using max-width */
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width 0.4s ease-in-out;
+}
+
+.recommend-bar-container:hover .quick-recommend-bar {
+    /* Show on hover */
+    max-width: 220px; /* Width of the inner content */
+}
+
+.quick-recommend-bar-inner {
+    width: 220px;
+    padding: 1.5rem;
+}
+
+.quick-recommend-bar h5 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    color: #B8977E;
+    text-align: center;
+    margin: 0 0 1rem 0;
+}
+
+.quick-recommend-bar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.quick-recommend-bar ul li a {
+    display: block;
+    color: #5C544A;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    text-align: center;
+    border-bottom: 1px solid #FDFBF7;
+    transition: background-color 0.2s ease;
+}
+
+.quick-recommend-bar ul li:last-child a {
+    border-bottom: none;
+}
+
+.quick-recommend-bar ul li a:hover {
+    background-color: #FDFBF7;
+}
+
+

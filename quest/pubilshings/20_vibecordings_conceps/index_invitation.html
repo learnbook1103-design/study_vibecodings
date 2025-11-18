@@ -10,17 +10,17 @@
 <body class="invitation-theme">
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Food Mark</a>
+            <a class="navbar-brand" href="index_invitation.html">Food Mark</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">홈</a>
+                        <a class="nav-link active" aria-current="page" href="index_invitation.html">홈</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">레시피</a>
+                        <a class="nav-link" href="#recipeCarousel">레시피</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">식재료</a>
@@ -38,36 +38,43 @@
         <section class="jumbotron-invitation">
             <h1>우리의 식탁으로 초대합니다</h1>
             <p>Food Mark가 정성껏 준비한 레시피로 특별한 순간을 만들어보세요.</p>
-            <a href="#" class="btn btn-primary btn-lg">오늘의 추천 레시피 보기</a>
+
         </section>
 
         <section class="mb-5">
             <h2 class="section-title">특별한 날을 위한 레시피</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="recipe-card">
-                        <img src="https://via.placeholder.com/400x250/E8D5C4/5C544A?text=Elegant+Kimchi+Jjigae" class="card-img-top" alt="김치찌개">
-                        <h5>돼지고기 김치찌개</h5>
-                        <p>한국인의 소울푸드, 김치찌개를 15분 만에 만드는 비법!</p>
-                        <a href="#" class="btn btn-primary">레시피 보기</a>
+            <div id="recipeCarousel" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="p-5 text-center">
+                            <h5 class="text-dark">돼지고기 김치찌개</h5>
+                            <p class="text-secondary">한국인의 소울푸드, 김치찌개를 15분 만에 만드는 비법!</p>
+                            <a href="recipe-detail-kimchi.html" class="btn btn-primary">레시피 보기</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="p-5 text-center">
+                            <h5 class="text-dark">간장 계란밥</h5>
+                            <p class="text-secondary">자취생 필수 요리! 5분이면 완성되는 마약 간장 계란밥.</p>
+                            <a href="recipe-detail-gyeranbap.html" class="btn btn-primary">레시피 보기</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="p-5 text-center">
+                            <h5 class="text-dark">알리오 올리오</h5>
+                            <p class="text-secondary">냉장고 속 재료로 뚝딱! 레스토랑 부럽지 않은 알리오 올리오.</p>
+                            <a href="recipe-detail-alio-olio.html" class="btn btn-primary">레시피 보기</a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="recipe-card">
-                        <img src="https://via.placeholder.com/400x250/E8D5C4/5C544A?text=Special+Gyeranbap" class="card-img-top" alt="계란밥">
-                        <h5>간장 계란밥</h5>
-                        <p>자취생 필수 요리! 5분이면 완성되는 마약 간장 계란밥.</p>
-                        <a href="#" class="btn btn-primary">레시피 보기</a>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="recipe-card">
-                        <img src="https://via.placeholder.com/400x250/E8D5C4/5C544A?text=Romantic+Alio+Olio" class="card-img-top" alt="파스타">
-                        <h5>알리오 올리오</h5>
-                        <p>냉장고 속 재료로 뚝딱! 레스토랑 부럽지 않은 알리오 올리오.</p>
-                        <a href="#" class="btn btn-primary">레시피 보기</a>
-                    </div>
-                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#recipeCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#recipeCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </section>
     </main>
@@ -87,6 +94,22 @@
             © 2025 Food Mark. All rights reserved.
         </div>
     </footer>
+
+    <div class="recommend-bar-container">
+        <div class="recommend-bar-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v10h2.5V2H16z"/></svg>
+        </div>
+        <div class="quick-recommend-bar">
+            <div class="quick-recommend-bar-inner">
+                <h5>오늘의 추천</h5>
+                <ul>
+                    <li><a href="recipe-detail-dakgalbi.html">매콤 닭갈비</a></li>
+                    <li><a href="recipe-detail-shrimp.html">새우 버터구이</a></li>
+                    <li><a href="recipe-detail-makguksu.html">들기름 막국수</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
