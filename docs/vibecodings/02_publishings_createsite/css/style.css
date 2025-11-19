@@ -1,0 +1,267 @@
+/* 기본 리셋 살짝 */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* 테마 공통 색상 변수 */
+:root {
+  --bg-dark: #050816;
+  --surface-dark: #0b1020;
+  --accent-dark: #5b8cff;
+  --accent-soft-dark: #7f5af0;
+  --text-primary-dark: #f5f5f5;
+  --text-secondary-dark: #9ca3af;
+  --border-subtle-dark: #1f2933;
+
+  --bg-light: #f5f5f7;
+  --surface-light: #ffffff;
+  --accent-light: #0070c9;
+  --accent-soft-light: #e5f1ff;
+  --text-primary-light: #111827;
+  --text-secondary-light: #6b7280;
+  --border-subtle-light: #e5e7eb;
+}
+
+/* 다크 테마 */
+body.theme-dark {
+  background-color: var(--bg-dark);
+  color: var(--text-primary-dark);
+}
+
+body.theme-dark .studio-header,
+body.theme-dark footer,
+body.theme-dark .section-soft {
+  background-color: var(--surface-dark);
+}
+
+body.theme-dark .navbar {
+  background: rgba(5, 8, 22, 0.9);
+}
+
+body.theme-dark .navbar-brand {
+  color: var(--text-primary-dark);
+}
+
+body.theme-dark .hero-title {
+  color: var(--text-primary-dark);
+}
+
+body.theme-dark .hero-subtitle,
+body.theme-dark .text-muted {
+  color: var(--text-secondary-dark) !important;
+}
+
+body.theme-dark .card,
+body.theme-dark .admin-card {
+  background-color: #0f172a;
+  color: var(--text-primary-dark);
+  border-color: var(--border-subtle-dark);
+}
+
+body.theme-dark .card.prompt-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+}
+
+/* 라이트 테마 */
+body.theme-light {
+  background-color: var(--bg-light);
+  color: var(--text-primary-light);
+}
+
+body.theme-light .studio-header,
+body.theme-light footer,
+body.theme-light .section-soft {
+  background-color: var(--surface-light);
+}
+
+body.theme-light .navbar {
+  background: rgba(245, 245, 247, 0.9);
+}
+
+body.theme-light .navbar-brand {
+  color: var(--text-primary-light);
+}
+
+body.theme-light .hero-title {
+  color: var(--text-primary-light);
+}
+
+body.theme-light .hero-subtitle,
+body.theme-light .text-muted {
+  color: var(--text-secondary-light) !important;
+}
+
+body.theme-light .card,
+body.theme-light .admin-card {
+  background-color: #ffffff;
+  color: var(--text-primary-light);
+  border-color: var(--border-subtle-light);
+}
+
+body.theme-light .card.prompt-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.12);
+}
+
+/* 공통 요소 스타일 */
+.studio-header {
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+}
+
+.hero {
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at top left, rgba(126, 143, 255, 0.38), transparent 55%),
+              radial-gradient(circle at bottom right, rgba(127, 90, 240, 0.35), transparent 55%);
+  opacity: 0.5;
+}
+
+.hero > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-kicker {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  opacity: 0.8;
+}
+
+.hero-title {
+  font-size: clamp(2.1rem, 3vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: 0.95rem;
+}
+
+.hero-card {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.9),
+    rgba(15, 23, 42, 0.95)
+  );
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+/* 카드 공통 */
+.card.prompt-card {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  cursor: pointer;
+}
+
+.card.prompt-card img {
+  transition: transform 0.4s ease;
+}
+
+.card.prompt-card:hover img {
+  transform: scale(1.06);
+}
+
+/* 카테고리 버튼 */
+.category-buttons .btn.active {
+  background-color: var(--accent-soft-dark);
+  border-color: transparent;
+  color: #f9fafb;
+}
+
+body.theme-light .category-buttons .btn.active {
+  background-color: var(--accent-soft-light);
+  color: var(--text-primary-light);
+}
+
+/* Admin */
+.admin-card {
+  border-radius: 1rem;
+}
+
+#admin-panel {
+  min-height: 60vh;
+}
+
+/* Nav active 상태 */
+.nav-link.active {
+  font-weight: 600;
+}
+
+/* Modal */
+#modal-full-prompt {
+  white-space: pre-wrap;
+}
+
+/* 유틸 */
+.object-fit-cover {
+  object-fit: cover;
+}
+
+/* NAV 색상 보정 (다크/라이트 테마별) */
+
+/* 다크 테마에서 Navbar 링크 색 */
+body.theme-dark .navbar .nav-link {
+  color: var(--text-secondary-dark);
+  opacity: 0.85;
+}
+
+body.theme-dark .navbar .nav-link:hover {
+  color: var(--text-primary-dark);
+  opacity: 1;
+}
+
+/* 다크 테마에서 활성 탭 (Gallery / Admin) 더 눈에 띄게 */
+body.theme-dark .navbar .nav-link.active {
+  color: var(--text-primary-dark);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* 라이트 테마일 때도 명시적으로 지정 */
+body.theme-light .navbar .nav-link {
+  color: var(--text-secondary-light);
+  opacity: 0.9;
+}
+
+body.theme-light .navbar .nav-link:hover {
+  color: var(--text-primary-light);
+  opacity: 1;
+}
+
+body.theme-light .navbar .nav-link.active {
+  color: var(--text-primary-light);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+body.theme-dark .theme-toggle .btn-outline-light {
+  border-color: rgba(148, 163, 184, 0.6);
+  color: var(--text-secondary-dark);
+}
+
+body.theme-dark .theme-toggle .btn-outline-light.active {
+  background-color: var(--accent-soft-dark);
+  border-color: transparent;
+  color: #f9fafb;
+}
+
+body.theme-light .theme-toggle .btn-outline-light {
+  border-color: var(--border-subtle-light);
+  color: var(--text-secondary-light);
+}
+
+body.theme-light .theme-toggle .btn-outline-light.active {
+  background-color: var(--accent-soft-light);
+  border-color: transparent;
+  color: var(--text-primary-light);
+}
