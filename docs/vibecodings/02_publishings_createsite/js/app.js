@@ -66,7 +66,7 @@ let prompts = [];
 
 // 관리자 로그인 상태
 let isAdminLoggedIn = false;
-const ADMIN_PASSWORD = "prompt1234"; // 연습용. 진짜 서비스에는 절대 이렇게 쓰면 안 됨.
+const ADMIN_PASSWORD = "prompt1234"; // 여기 비밀번호 네가 쓸 값으로 변경해도 됨
 const ADMIN_LOGIN_KEY = "prompt_ui_studio_admin_logged";
 
 // 현재 필터/편집 상태
@@ -95,29 +95,19 @@ function saveToStorage() {
 
 // ===== 초기화 =====
 document.addEventListener("DOMContentLoaded", () => {
-  // 데이터 로딩
-  const stored = loadFromStorage();
-  prompts = stored && Array.isArray(stored) && stored.length > 0 ? stored : initialPrompts.slice();
+  console.log("[INIT] DOMContentLoaded");
 
-  // 렌더링
-  renderGallery();
-  renderAdminTable();
-  updateVisibleCount();
-
-  // 이벤트 바인딩
-  setupThemeToggle();
-  setupViewToggle();
-  setupCategoryFilter();
-  setupPromptForm();
-
-document.addEventListener("DOMContentLoaded", () => {
   // 관리자 로그인 상태 복원
   const storedAdmin = localStorage.getItem(ADMIN_LOGIN_KEY);
   isAdminLoggedIn = storedAdmin === "true";
+  console.log("[INIT] isAdminLoggedIn:", isAdminLoggedIn);
 
   // 데이터 로딩
   const stored = loadFromStorage();
-  prompts = stored && Array.isArray(stored) && stored.length > 0 ? stored : initialPrompts.slice();
+  prompts =
+    stored && Array.isArray(stored) && stored.length > 0
+      ? stored
+      : initialPrompts.slice();
 
   // 초기 렌더링
   renderGallery();
@@ -129,10 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupViewToggle();
   setupCategoryFilter();
   setupPromptForm();
-  setupAdminLogin();   // ← 이 줄 꼭 있어야 함
-});
-
-
+  setupAdminLogin();
 });
 
 // ===== 테마 토글 =====
@@ -140,7 +127,6 @@ function setupThemeToggle() {
   const buttons = document.querySelectorAll(".theme-toggle [data-theme]");
   const body = document.body;
 
-  // 저장된 테마 불러오기
   const savedTheme = localStorage.getItem("prompt_ui_studio_theme");
   if (savedTheme === "light") {
     body.classList.remove("theme-dark");
@@ -166,20 +152,53 @@ function setupThemeToggle() {
   });
 }
 
+// ===== 공용 화면 전환 함수 =====
+function switchView(view) {
+  const navButtons = document.querySelectorAll('[data-view]');
+  const gallerySections = document.querySelectorAll(".view-gallery-section");
+  const adminSection = document.getElementById("admin-panel");
+
+  console.log("[switchView] view =", view);
+
+  // 네비게이션 활성 상태 변경
+  navButtons.forEach((b) => {
+    b.classList.toggle("active", b.dataset.view === view);
+  });
+
+  if (!adminSection) {
+    console.warn("[switchView] #admin-panel not found");
+    return;
+  }
+
+  if (view === "gallery") {
+    gallerySections.forEach((sec) => sec.classList.remove("d-none"));
+    adminSection.classList.add("d-none");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else if (view === "admin") {
+    gallerySections.forEach((sec) => sec.classList.add("d-none"));
+    adminSection.classList.remove("d-none");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}
+
 // ===== 메인 뷰 토글 (Gallery / Admin) =====
 function setupViewToggle() {
   const navButtons = document.querySelectorAll('[data-view]');
+  console.log("[setupViewToggle] navButtons:", navButtons.length);
 
   navButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const view = btn.dataset.view;
+      const view = btn.dataset.view || "gallery";
+      console.log("[Nav Click] view =", view, "isAdminLoggedIn =", isAdminLoggedIn);
 
       // 🔒 Admin 뷰는 로그인 상태 먼저 체크
       if (view === "admin" && !isAdminLoggedIn) {
         const loginModalEl = document.getElementById("adminLoginModal");
         if (loginModalEl) {
-          const loginModal = new bootstrap.Modal(loginModalEl);
+          const loginModal = bootstrap.Modal.getOrCreateInstance(loginModalEl);
           loginModal.show();
+        } else {
+          console.warn("[setupViewToggle] #adminLoginModal not found");
         }
         return; // 로그인 안 된 상태에선 화면 전환 안 함
       }
@@ -212,6 +231,10 @@ function setupCategoryFilter() {
 // ===== 갤러리 렌더링 =====
 function renderGallery() {
   const container = document.getElementById("gallery-row");
+  if (!container) {
+    console.warn("[renderGallery] #gallery-row not found");
+    return;
+  }
   container.innerHTML = "";
 
   const filtered = prompts.filter((p) =>
@@ -259,12 +282,13 @@ function renderGallery() {
 
     container.appendChild(col);
 
-    // 상세 보기 버튼에 이벤트
     const card = col.querySelector(".prompt-card");
     const btnView = col.querySelector(".view-detail-btn");
-    btnView.addEventListener("click", () => openDetailModal(prompt.id));
+    btnView.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openDetailModal(prompt.id);
+    });
     card.addEventListener("click", (e) => {
-      // 카드 전체 클릭하되, 버튼 클릭 이벤트는 중복 방지
       if (!e.target.classList.contains("view-detail-btn")) {
         openDetailModal(prompt.id);
       }
@@ -308,6 +332,8 @@ function categoryBadgeClass(cat) {
 
 function updateVisibleCount() {
   const countEl = document.getElementById("visible-count");
+  if (!countEl) return;
+
   const filtered = prompts.filter((p) =>
     currentCategory === "all" ? true : p.category === currentCategory
   );
@@ -322,6 +348,10 @@ function openDetailModal(id) {
   if (!prompt) return;
 
   const modalEl = document.getElementById("promptDetailModal");
+  if (!modalEl) {
+    console.warn("[openDetailModal] #promptDetailModal not found");
+    return;
+  }
   if (!modalInstance) {
     modalInstance = new bootstrap.Modal(modalEl);
   }
@@ -336,21 +366,14 @@ function openDetailModal(id) {
     "badge " + categoryBadgeClass(prompt.category);
 
   document.getElementById("modal-tags").textContent =
-    (prompt.tags || []).length > 0
-      ? "#" + prompt.tags.join(" #")
-      : "";
+    (prompt.tags || []).length > 0 ? "#" + prompt.tags.join(" #") : "";
 
-  document.getElementById("modal-model").textContent =
-    prompt.model || "";
-
+  document.getElementById("modal-model").textContent = prompt.model || "";
   document.getElementById("modal-short-description").textContent =
     prompt.shortDescription || "";
-
   document.getElementById("modal-full-prompt").textContent =
     prompt.fullPrompt || "";
-
-  document.getElementById("modal-notes").textContent =
-    prompt.notes || "";
+  document.getElementById("modal-notes").textContent = prompt.notes || "";
 
   modalInstance.show();
 }
@@ -358,6 +381,11 @@ function openDetailModal(id) {
 // ===== Admin: 테이블 렌더링 =====
 function renderAdminTable() {
   const tbody = document.getElementById("admin-table-body");
+  if (!tbody) {
+    console.warn("[renderAdminTable] #admin-table-body not found");
+    return;
+  }
+
   tbody.innerHTML = "";
 
   prompts.forEach((p) => {
@@ -381,7 +409,6 @@ function renderAdminTable() {
     tbody.appendChild(tr);
   });
 
-  // 이벤트
   tbody.querySelectorAll("button[data-action]").forEach((btn) => {
     const id = btn.dataset.id;
     const action = btn.dataset.action;
@@ -400,13 +427,17 @@ function setupPromptForm() {
   const btnUpdate = document.getElementById("btn-update");
   const btnReset = document.getElementById("btn-reset-form");
 
+  if (!form) {
+    console.warn("[setupPromptForm] #prompt-form not found");
+    return;
+  }
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const data = getFormData();
     if (!data) return;
 
-    // 새로 추가
     prompts.push(data);
     saveToStorage();
     renderGallery();
@@ -415,25 +446,28 @@ function setupPromptForm() {
     form.reset();
   });
 
-  btnUpdate.addEventListener("click", () => {
-    const data = getFormData();
-    if (!data || !editingId) return;
+  if (btnUpdate) {
+    btnUpdate.addEventListener("click", () => {
+      const data = getFormData();
+      if (!data || !editingId) return;
 
-    const index = prompts.findIndex((p) => p.id === editingId);
-    if (index !== -1) {
-      // id는 고정, 나머지만 업데이트
-      prompts[index] = { ...prompts[index], ...data, id: editingId };
-      saveToStorage();
-      renderGallery();
-      renderAdminTable();
-      updateVisibleCount();
+      const index = prompts.findIndex((p) => p.id === editingId);
+      if (index !== -1) {
+        prompts[index] = { ...prompts[index], ...data, id: editingId };
+        saveToStorage();
+        renderGallery();
+        renderAdminTable();
+        updateVisibleCount();
+        resetFormState();
+      }
+    });
+  }
+
+  if (btnReset) {
+    btnReset.addEventListener("click", () => {
       resetFormState();
-    }
-  });
-
-  btnReset.addEventListener("click", () => {
-    resetFormState();
-  });
+    });
+  }
 }
 
 function getFormData() {
@@ -456,7 +490,6 @@ function getFormData() {
     return null;
   }
 
-  // 새로 추가할 때 id 중복 체크
   if (!editingId) {
     const exists = prompts.some((p) => p.id === id);
     if (exists) {
@@ -497,10 +530,12 @@ function fillFormForEdit(id) {
 
 function resetFormState() {
   const form = document.getElementById("prompt-form");
-  form.reset();
+  if (form) form.reset();
   editingId = null;
-  document.getElementById("btn-save").classList.remove("d-none");
-  document.getElementById("btn-update").classList.add("d-none");
+  const btnSave = document.getElementById("btn-save");
+  const btnUpdate = document.getElementById("btn-update");
+  if (btnSave) btnSave.classList.remove("d-none");
+  if (btnUpdate) btnUpdate.classList.add("d-none");
 }
 
 function deletePrompt(id) {
@@ -516,56 +551,51 @@ function deletePrompt(id) {
   updateVisibleCount();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+// ===== Admin 로그인 처리 =====
+function setupAdminLogin() {
+  const form = document.getElementById("admin-login-form");
+  const passwordInput = document.getElementById("admin-password");
+  const errorText = document.getElementById("admin-login-error");
+  const loginModalEl = document.getElementById("adminLoginModal");
 
-  // ...기존 초기 설정들...
+  if (!form || !passwordInput || !loginModalEl) {
+    console.warn("[setupAdminLogin] elements not found", form, passwordInput, loginModalEl);
+    return;
+  }
 
-  setupThemeToggle();
-  setupViewToggle();
-  setupCategoryFilter();
-  setupPromptForm();
+  const loginModal = bootstrap.Modal.getOrCreateInstance(loginModalEl);
 
-  setupAdminLogin(); // ← 이거 추가
-});
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const value = passwordInput.value.trim();
 
-function switchView(view) {
-  const navButtons = document.querySelectorAll('[data-view]');
-  const gallerySections = document.querySelectorAll(".view-gallery-section");
-  const adminSection = document.getElementById("admin-panel");
+    console.log("[Admin Login] try value:", value);
 
-  // 네비게이션 활성 상태 변경
-  navButtons.forEach((b) => {
-    b.classList.toggle("active", b.dataset.view === view);
+    if (value === ADMIN_PASSWORD) {
+      console.log("[Admin Login] success");
+      isAdminLoggedIn = true;
+      localStorage.setItem(ADMIN_LOGIN_KEY, "true");
+      if (errorText) errorText.classList.add("d-none");
+      passwordInput.value = "";
+
+      loginModal.hide();
+
+      // 바로 Admin 화면으로 전환
+      switchView("admin");
+    } else {
+      console.log("[Admin Login] failed");
+      if (errorText) {
+        errorText.classList.remove("d-none");
+      } else {
+        alert("비밀번호가 올바르지 않습니다.");
+      }
+    }
   });
 
-  if (view === "gallery") {
-    gallerySections.forEach((sec) => sec.classList.remove("d-none"));
-    adminSection.classList.add("d-none");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  } else if (view === "admin") {
-    gallerySections.forEach((sec) => sec.classList.add("d-none"));
-    adminSection.classList.remove("d-none");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-}
-
-function switchView(view) {
-  const navButtons = document.querySelectorAll('[data-view]');
-  const gallerySections = document.querySelectorAll(".view-gallery-section");
-  const adminSection = document.getElementById("admin-panel");
-
-  // 네비게이션 활성 상태 변경
-  navButtons.forEach((b) => {
-    b.classList.toggle("active", b.dataset.view === view);
+  loginModalEl.addEventListener("show.bs.modal", () => {
+    if (errorText) errorText.classList.add("d-none");
+    passwordInput.value = "";
+    setTimeout(() => passwordInput.focus(), 150);
   });
-
-  if (view === "gallery") {
-    gallerySections.forEach((sec) => sec.classList.remove("d-none"));
-    adminSection.classList.add("d-none");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  } else if (view === "admin") {
-    gallerySections.forEach((sec) => sec.classList.add("d-none"));
-    adminSection.classList.remove("d-none");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
 }
