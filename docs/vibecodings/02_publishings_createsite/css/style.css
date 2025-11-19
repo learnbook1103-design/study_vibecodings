@@ -15,23 +15,47 @@ body.theme-light {
   color: #212529 !important;
 }
 
-/* Dark theme container backgrounds */
+/* 다크(시네마틱) 테마 */
 body.theme-dark {
   background-color: #0b0c10 !important;
   color: #f8f9fa !important;
 }
 
 /* =========================================================
-   NAVBAR
+   HEADER / NAVBAR
 ========================================================= */
 .studio-header {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
+/* 다크 테마에서 헤더 배경 + 텍스트 */
+body.theme-dark .studio-header {
+  background-color: #050509;
+  color: #f8f9fa;
+}
+
+body.theme-dark .studio-header .navbar,
+body.theme-dark .studio-header .navbar-brand,
+body.theme-dark .studio-header .nav-link {
+  color: #f8f9fa !important;
+}
+
+/* 라이트 테마에서 헤더 텍스트 */
+body.theme-light .studio-header {
+  background-color: #ffffff;
+  color: #212529;
+}
+
+body.theme-light .studio-header .navbar,
+body.theme-light .studio-header .navbar-brand,
+body.theme-light .studio-header .nav-link {
+  color: #212529 !important;
+}
+
+/* 공통 nav-link 스타일 */
 .nav-link {
   cursor: pointer;
-  color: inherit !important;
   opacity: 0.7;
   transition: opacity 0.25s;
 }
@@ -39,6 +63,14 @@ body.theme-dark {
 .nav-link.active {
   opacity: 1;
   font-weight: 600;
+}
+
+/* 햄버거 아이콘이 다크 모드에서도 보이게 */
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+body.theme-light .navbar-toggler-icon {
+  filter: invert(0);
 }
 
 /* =========================================================
@@ -129,13 +161,12 @@ body.theme-light .prompt-card {
   color: #f8f9fa !important;
 }
 
-/* Light theme modal */
 body.theme-light #promptDetailModal .modal-content {
   background-color: #ffffff !important;
   color: #212529 !important;
 }
 
-/* -------- Full Prompt 영역 최종 확정 스타일 -------- */
+/* Full Prompt 영역 */
 #modal-full-prompt {
   white-space: pre-wrap !important;
   word-break: break-word !important;
@@ -144,21 +175,20 @@ body.theme-light #promptDetailModal .modal-content {
   font-size: 0.9rem;
 }
 
-/* Light theme */
+/* 라이트 테마 Full Prompt */
 body.theme-light #promptDetailModal #modal-full-prompt {
   background-color: #f1f3f5 !important;
   color: #212529 !important;
   border: 1px solid #dee2e6 !important;
 }
 
-/* Dark (cinematic) theme */
+/* 다크(시네마틱) 테마 Full Prompt */
 body.theme-dark #promptDetailModal #modal-full-prompt {
   background-color: rgba(255, 255, 255, 0.04) !important;
   color: #f8f9fa !important;
   border: 1px solid rgba(255, 255, 255, 0.15) !important;
 }
 
-/* 태그 */
 #modal-tags {
   opacity: 0.9;
 }
